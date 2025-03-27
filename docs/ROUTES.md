@@ -26,3 +26,14 @@ Content-Type: application/json
 POST /api/login HTTP/1.1
 Authorization: Bearer {token}
 ```
+* Создание короткой ссылки
+```
+POST /api/login HTTP/1.1
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+"url": "string" - url адрес
+}
+```
+

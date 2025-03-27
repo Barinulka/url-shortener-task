@@ -35,13 +35,10 @@ class LinkService implements LinkServiceInterface
 
     private function generate(): string
     {
-        $result = '';
+        $result = $this->generator->generate();
 
-        foreach ($this->generator->generate() as $string) {
-            if (0 === $this->repository->countByShortUrl($string)) {
-                $result = $string;
-                break;
-            }
+        if (0 !== $this->repository->countByShortUrl($result)) {
+            $this->generate();
         }
 
         return $result;
